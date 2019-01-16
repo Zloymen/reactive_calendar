@@ -1,0 +1,21 @@
+app:
+  data:
+    format: dd-MM-yyyy
+    token: <add you token>
+    url: https://data.gov.ru/api/json/dataset/7708660670-proizvcalendar/version/20151123T183036/content/
+    #cron-update-task: '0 0 10 * * MON-FRI' # в 10 часов каждого буднего дня
+    cron-update-task: '* */5 * * * *'
+
+
+server:
+  port: 7788
+
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 1
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/calendar
+

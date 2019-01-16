@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  db:
+    image: mongo:latest
+
+  calendar:
+    image: platiza/reactive-calendar:latest
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://db:27017/calendar
+      - SERVER_PORT=6767
+      - APP_DATA_TOKEN=<add you token>
+    links:
+      - db
+    ports:
+      - "7766:6767"
+
